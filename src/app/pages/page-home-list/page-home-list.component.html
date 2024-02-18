@@ -1,0 +1,13 @@
+<app-page-container>
+  <div class="list-container">
+    <ul>
+      @for(link of links; track link.id) {
+      <li>
+        <a [routerLink]="link.route">
+          {{ link.label }}
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+</app-page-container>
