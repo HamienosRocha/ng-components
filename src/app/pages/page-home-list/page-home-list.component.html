@@ -3,7 +3,10 @@
     <ul>
       @for(link of links; track link.id) {
       <li>
-        <a [routerLink]="link.route">
+        <a
+          class="cursor-pointer"
+          [routerLink]="link.route"
+        >
           {{ link.label }}
         </a>
       </li>

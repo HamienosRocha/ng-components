@@ -10,9 +10,9 @@ import { Component } from '@angular/core';
     }
   `,
   template: `
-    <ng-content>
-
-    </ng-content>
+  <main class="container">
+    <ng-content></ng-content>
+  </main>
   `,
 })
 export class PageContainerComponent {
