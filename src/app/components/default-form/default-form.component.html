@@ -1,1 +1,46 @@
-<p>default-form works!</p>
+@if (fields) {
+<form
+  [id]="fields.formId"
+  [formGroup]="fields.form"
+  [class]="fields.class"
+>
+  <div class="grig grid-cols-12">
+
+    @for (field of fields.fields; track field.control) {
+    <ng-container>
+      @if (field.type === 'input') {
+      <div
+        class="input-div"
+        [ngClass]="field.class"
+      >
+        <label
+          class="label-form"
+          [ngClass]="{'required-field': field.required }"
+        >{{ field.label }}</label>
+
+        <input
+          class="form-control"
+          type="text"
+          [id]="fields.formId + '-' + field.control"
+          [formControlName]="field.control"
+          [placeholder]="field.input?.placeholder"
+          (keyup)="field.input?.onKeyUpFunction(fields.form.controls[field.control])"
+        >
+
+        <!-- <p
+            *ngIf="formService.validar(camposFormDependente.formId, camposFormDependente.form, campo.controle)"
+            class="messagem-erro-campo-ivalido"
+          >
+            {{ formService.validar(camposFormDependente.formId, camposFormDependente.form, campo.controle) }}
+          </p> -->
+      </div>
+      }
+
+    </ng-container>
+    }
+  </div>
+</form>
+}
+@else {
+<p>Fields not found</p>
+}
